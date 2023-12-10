@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from 'react';
+import { DotsVerticalIcon } from '@radix-ui/react-icons';
 import AISubjectLine from '../components/AISubjectLineModal';
 import AISubjectLineDropdown from '../components/AISubjectLineDropdown';
 import AIContext from '../components/AISimpleContext.jsx';
@@ -21,7 +22,7 @@ export default function Home() {
     <>
     <h1 className='mt-2 ml-20 text-3xl font-bold'>CXMI-113 Email Subject Line Generator using ChatGPT API - Demo</h1>
     <div className="flex flex-col gap-4 mt-4 ml-20">
-      <TestCase1 />
+      {/* <TestCase1 /> */}
       <TestCase2 />
       <TestCase3 />
     </div>
@@ -42,11 +43,12 @@ const TestCase1 = () => {
       <h2 className="mb-8 text-2xl">AI Subject Line Generator (Modal)</h2>
       <div className="flex items-center gap-1">
         <p className="mr-4">Subject</p>
-        <input type='text'
+        <input
+          className="shadow appearance-none border rounded w-[500px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          type="text"
           placeholder="subject line"
-          value={text}
           onChange={(e) => setText(e.currentTarget.value)}
-          width="500px"
+          value={text}
         />
         {/* AI Modal usage*/}
         <AISubjectLine
@@ -56,17 +58,18 @@ const TestCase1 = () => {
           toneOfVoices={tones}
         >
           <AISubjectLine.Trigger asChild>
-            <button>recommendation</button>
+            <button><BellIcon /></button>
           </AISubjectLine.Trigger>
           <AISubjectLine.Modal>
             <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>
               Subject Line Generator
             </p>
             <p style={{ marginBottom: '1rem' }}>
-              Please input keywords to outline your campaign. You may also specify the desired tone of voice for the campaign to further elaborate.
+              Please input keywords to outline your campaign. You may also
+              specify the desired tone of voice for the campaign to further
+              elaborate.
             </p>
-            <AISubjectLine.Form>
-            </AISubjectLine.Form>
+            <AISubjectLine.Form></AISubjectLine.Form>
             <AISubjectLine.Suggestions>
               <div className="border-t-[1px] border-gray-500 h-2" />
               <p style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
@@ -92,11 +95,12 @@ const TestCase2 = () => {
       <h2 className="mb-8 text-2xl">AI Subject Line Generator (Dropdown)</h2>
       <div className="flex items-center gap-1">
         <p className="mr-4">Subject</p>
-        <input type='text'
+        <input
+          className="shadow appearance-none border rounded w-[500px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          type="text"
           placeholder="subject line"
-          value={text}
           onChange={(e) => setText(e.currentTarget.value)}
-          width="500px"
+          value={text}
         />
         {/* AI SubjectLIne popover usage*/}
         <AISubjectLineDropdown
@@ -106,17 +110,23 @@ const TestCase2 = () => {
           toneOfVoices={tones}
         >
           <AISubjectLineDropdown.Trigger asChild>
-            <button>recommendation</button>
+            <button
+              class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-[12px] px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              <DotsVerticalIcon/>
+            </button>
           </AISubjectLineDropdown.Trigger>
           <AISubjectLineDropdown.Popover>
             <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>
               Subject Line Generator
             </p>
             <p style={{ marginBottom: '1rem' }}>
-              Please input keywords to outline your campaign. You may also specify the desired tone of voice for the campaign to further elaborate.
+              Please input keywords to outline your campaign. You may also
+              specify the desired tone of voice for the campaign to further
+              elaborate.
             </p>
-            <AISubjectLineDropdown.Form>
-            </AISubjectLineDropdown.Form>
+            <AISubjectLineDropdown.Form></AISubjectLineDropdown.Form>
             <AISubjectLineDropdown.Suggestions>
               <div className="border-t-[1px] border-gray-500 h-2" />
               <p style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
@@ -153,7 +163,7 @@ const TestCase3 = () => {
     <div className="flex flex-col pb-10 border-b">
       <h2 className="mb-8 text-2xl">AI Writer Assistant (Context Menu)</h2>
       <div className="flex gap-1">
-        <p className="mr-4 text-white" style={{ color: 'white' }}>
+        <p className="mr-4">
           Subject
         </p>
         <AIContext
@@ -171,6 +181,7 @@ const TestCase3 = () => {
               onChange={(e) => setTextAreaVal(e.target.value)}
               value={textAreaVal}
               onMouseUp={handleMouseUp}
+              placeholder='Write something, select the text and right click to invoke the AI Writer Assistant'
             />
           </AIContext.Trigger>
           <AIContext.Content>
