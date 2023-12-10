@@ -5,6 +5,7 @@ import { DotsVerticalIcon } from '@radix-ui/react-icons';
 import AISubjectLine from '../components/AISubjectLineModal';
 import AISubjectLineDropdown from '../components/AISubjectLineDropdown';
 import AIContext from '../components/AISimpleContext.jsx';
+import Card from '../components/Card';
 
 const tones = [
   { id: 'professional', label: 'Professional' },
@@ -25,6 +26,7 @@ export default function Home() {
       {/* <TestCase1 /> */}
       <TestCase2 />
       <TestCase3 />
+      <Card />
     </div>
   </>
   )

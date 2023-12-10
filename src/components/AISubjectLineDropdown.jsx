@@ -106,7 +106,7 @@ function AISubjectLineForm({ children }) {
         <button
           type="submit"
           disabled={isLoading}
-          className={emptySuggestions ? 'bg-gray-900 text-white' : '' + 'px-4 py-2 rounded-md'}
+          className={(emptySuggestions ? 'bg-gray-900 text-white' : 'border border-gray-700') + ' px-4 py-2 rounded-md'}
         >
           {isLoading ? 'Creating...' : 'Create'}
         </button>
@@ -174,7 +174,7 @@ function AISubjectLineSuggestions({ children }) {
       <RadioGroup.Root className="flex flex-col gap-2.5" defaultValue={selectedSubject}>
         {!emptySuggestions
           ? suggestions.map((subject) => (
-              <div className="flex items-center">
+              <div className="flex items-center" key={subject}>
                 <RadioGroup.Item
                   className="bg-white w-[18px] h-[18px] rounded-full shadow-[0_2px_10px] shadow-gray-900 hover:bg-gray-100 focus:shadow-[0_0_0_2px] focus:shadow-black cursor-default"
                   value={subject}
@@ -184,7 +184,7 @@ function AISubjectLineSuggestions({ children }) {
                   <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[10px] after:h-[10px] after:rounded-[50%] after:bg-gray-500" />
                 </RadioGroup.Item>
                 <label
-                  className="text-sm leading-none pl-[15px]"
+                  className="text-md leading-none pl-[15px]"
                   htmlFor={subject}
                 >
                   {subject}
