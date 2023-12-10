@@ -58,7 +58,7 @@ const TestCase1 = () => {
           toneOfVoices={tones}
         >
           <AISubjectLine.Trigger asChild>
-            <button><BellIcon /></button>
+            <button><DotsVerticalIcon /></button>
           </AISubjectLine.Trigger>
           <AISubjectLine.Modal>
             <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>
