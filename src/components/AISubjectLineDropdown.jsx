@@ -1,7 +1,7 @@
 import * as Popover from '@radix-ui/react-popover';
 import * as Select from '@radix-ui/react-select';
+import * as RadioGroup from '@radix-ui/react-radio-group';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-// import { Button, Radio } from '@uplandsoftware/ui-library';
 import { useOpenAI } from '../customHook/useOpenAI';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
@@ -106,7 +106,7 @@ function AISubjectLineForm({ children }) {
         <button
           type="submit"
           disabled={isLoading}
-          variant={emptySuggestions ? 'contained' : 'outlined'}
+          className={emptySuggestions ? 'bg-gray-900 text-white' : '' + 'px-4 py-2 rounded-md'}
         >
           {isLoading ? 'Creating...' : 'Create'}
         </button>
@@ -171,26 +171,34 @@ function AISubjectLineSuggestions({ children }) {
   return (
     <div className={`mt-5 ${isLoading ? 'opacity-50' : ''}`}>
       {children}
-      <div className="flex flex-col">
+      <RadioGroup.Root className="flex flex-col gap-2.5" defaultValue={selectedSubject}>
         {!emptySuggestions
           ? suggestions.map((subject) => (
-              <input type='radio'
-                name="suggestions"
-                key={subject}
-                label={subject}
-                value={subject}
-                checked={subject === selectedSubject}
-                onChange={() => setSelectedSubject(subject)}
-                disabled={isLoading}
-              />
+              <div className="flex items-center">
+                <RadioGroup.Item
+                  className="bg-white w-[18px] h-[18px] rounded-full shadow-[0_2px_10px] shadow-gray-900 hover:bg-gray-100 focus:shadow-[0_0_0_2px] focus:shadow-black cursor-default"
+                  value={subject}
+                  id={subject}
+                  onClick={() => setSelectedSubject(subject)}
+                >
+                  <RadioGroup.Indicator className="flex items-center justify-center w-full h-full relative after:content-[''] after:block after:w-[10px] after:h-[10px] after:rounded-[50%] after:bg-gray-500" />
+                </RadioGroup.Item>
+                <label
+                  className="text-sm leading-none pl-[15px]"
+                  htmlFor={subject}
+                >
+                  {subject}
+                </label>
+              </div>
             ))
           : null}
-      </div>
+      </RadioGroup.Root>
       <div className="mt-4 text-right">
         <button
           type="button"
           onClick={() => onSelect(selectedSubject)}
           disabled={isLoading}
+          className='bg-gray-700 px-6 py-2 mt-1 text-white rounded-md'
         >
           Select
         </button>

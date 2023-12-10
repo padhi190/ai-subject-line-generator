@@ -111,7 +111,7 @@ const TestCase2 = () => {
         >
           <AISubjectLineDropdown.Trigger asChild>
             <button
-              class="bg-gray-700 hover:bg-gray-900 text-white font-bold py-[12px] px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-[12px] px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
             >
               <DotsVerticalIcon/>
