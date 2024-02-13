@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## AI Subject Line Generator
 
-## Getting Started
+This Proof of Concept project utilizes the OpenAI chat completion API to generate subject lines based on the user provided description and tone of voice.
 
-First, run the development server:
+### Subject Line Generator
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![subject-line-demo](./public/subject-line.gif)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Writing Assistant
+I have also added an AI Writer Assistant feature that can check spelling and grammar, adjust sentence length, and modify the tone of voice.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Check Spelling and Grammar
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![spelling](./public/spelling.gif)
 
-## Learn More
+#### Make Longer
 
-To learn more about Next.js, take a look at the following resources:
+![make-longer](./public/make-longer.gif)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Change Tone of Voice
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![change-tone](./public/tone-of-voice.gif)
 
-## Deploy on Vercel
+## Tech Stack
+- NextJS
+- OpenAI
+- Radix UI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Workflow
+The implementation of this Proof of Concept is straightforward. It involves creating two endpoints in the NextJS route. One endpoint is a `POST` request to `api/subject` for generating an email subject line, and the other is a `POST` request to `api/writing` for the AI Writing assistant. Both endpoints will make an API call to the OpenAI chat completion API.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![change-tone](./public/workflow.gif)
+
+The actual implementation of this feature is yet to be decided. However, I imagine that the request will pass through the API Gateway, which will invoke a lambda function. This function will then make an API call to the OpenAI API.
+
+![change-tone](./public/future.gif)
