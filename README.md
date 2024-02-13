@@ -29,8 +29,8 @@ I have also added an AI Writer Assistant feature that can check spelling and gra
 ## Workflow
 The implementation of this Proof of Concept is straightforward. It involves creating two endpoints in the NextJS route. One endpoint is a `POST` request to `api/subject` for generating an email subject line, and the other is a `POST` request to `api/writing` for the AI Writing assistant. Both endpoints will make an API call to the OpenAI chat completion API.
 
-![change-tone](./public/workflow.gif)
+![workflow](./public/workflow.gif)
 
 The actual implementation of this feature is yet to be decided. However, I imagine that the request will pass through the API Gateway, which will invoke a lambda function. This function will then make an API call to the OpenAI API.
 
-![change-tone](./public/future.gif)
+![future-workflow](./public/future.gif)
